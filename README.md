@@ -40,14 +40,14 @@ A survey of existing PDF-to-TXT solutions found no extant solutions that meet al
 18. Optionally, you can check that you set up the PATH variable correctly in steps 6-10 by typing `echo %PATH%`. The output must include your equivalent of `C:\Users\mark\Desktop\ocr\Tesseract-OCR` and `C:\Users\mark\Desktop\ocr\poppler-0.68.0_x86\poppler-0.68.0\bin` for the script to work.
 
 
-## macOS
+## macOS (using python3)
 1. Make a new folder on your Desktop called `ocr` (i.e., `/Users/mark/Desktop/ocr`)
 2. Install Tesseract-OCR using either MacPorts (`sudo port install tesseract`) or Homebrew (`brew install tesseract`
 3. Install [poppler for Mac](http://macappstore.org/poppler/).
-4. Download this Github project to `/Users/mark/Desktop/ocr`).
+4. Download this Github project to `/Users/mark/Desktop/ocr`). `git clone ...`
 5. Unzip the project.
 6. Open a terminal and navigate to the folder via the command line (e.g., `cd /Users/mark/Desktop/ocr/ocr2text`)
-7. Run `pip install --user --requirement requirements.txt`
+7. Run `pip3 install --user --requirement requirements.txt`
 
 ## Linux
 1. `sudo apt-get install tesseract-ocr`
@@ -63,7 +63,7 @@ If you have successfully completed the setup steps and are using Python version 
 On the command line, navigate to the directory where you downloaded the script and run:
 
 ```
-python ocr2text.py
+python3 ocr2text.py
 ```
 
 You will see the following:
