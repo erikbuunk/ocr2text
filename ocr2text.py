@@ -118,6 +118,7 @@ def convert_recursive(source, destination, count):
 
 
 def convert(sourcefile, destination_file, count, pdfCounter):
+    print('Converting: ' + sourcefile)
     text = extract_tesseract(sourcefile)
     with open(destination_file, 'w', encoding='utf-8') as f_out:
         f_out.write(text)
@@ -127,6 +128,20 @@ def convert(sourcefile, destination_file, count, pdfCounter):
     update_progress(count / pdfCounter)
     return count
 
+
+print ('Number of arguments:', len(sys.argv), 'arguments.')
+print ('Argument List:', str(sys.argv))
+
+source =''
+destination = ''
+
+if(len(sys.argv)>=2):
+    source=sys.argv[1]
+    destination = source #default to current dir
+
+if(len(sys.argv)>=3):
+    destination=sys.argv[2]
+
 count = 0
 print()
 print('********************************')
@@ -134,17 +149,27 @@ print('*** PDF to TXT file, via OCR ***')
 print('********************************')
 print()
 dir_path = os.path.dirname(os.path.realpath(__file__))
-print('Source file or folder of PDF(s) [' + dir_path + ']:')
-print('(Press [Enter] for current working directory)')
-source = input()
-if source == '':
-    source = dir_path
 
-print('Destination folder for TXT [' + dir_path + ']:')
-print('(Press [Enter] for current working directory)')
-destination = input()
-if destination == '':
-    destination = dir_path
+if(len(source)==0):
+    print('Source file or folder of PDF(s) [' + dir_path + ']:')
+    print('(Press [Enter] for current working directory)')
+    source = input()
+    if source == '':
+        source = dir_path
+else:
+    print('Source folder: ' + source)
+
+if(len(destination)==0):
+    print('Destination folder for TXT [' + dir_path + ']:')
+    print('(Press [Enter] for current working directory)')
+    destination = input()
+    if destination == '':
+        destination = dir_path
+else:
+    print('Destination folder: ' + destination)
+
+
+print('Starting OCR....')
 
 if (os.path.exists(source)):
     if (os.path.isdir(source)):
